@@ -1,0 +1,179 @@
+.app {
+  min-height: 100vh;
+  padding: 35px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  color: #172554;
+  font-size: 38px;
+}
+
+header p {
+  margin-bottom: 25px;
+  color: #64748b;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.controls label {
+  color: #334155;
+  font-weight: bold;
+}
+
+select,
+.controls button {
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+select {
+  color: #1e293b;
+  background: white;
+  border: 1px solid #94a3b8;
+  cursor: pointer;
+  outline: none;
+}
+
+select:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px #4f46e526;
+}
+
+.controls button {
+  color: white;
+  background: #4f46e5;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.controls button:hover {
+  background: #4338ca;
+  transform: translateY(-1px);
+}
+
+.controls button:active {
+  transform: translateY(0);
+}
+
+.message {
+  min-height: 24px;
+  color: #475569;
+  font-weight: bold;
+}
+
+.error-message {
+  color: #dc2626;
+}
+
+.chessboard {
+  display: grid;
+  width: min(78vw, 600px);
+  aspect-ratio: 1;
+  margin: 20px auto;
+  overflow: hidden;
+  border: 8px solid #312e81;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px #0003;
+}
+
+.square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.light-square {
+  background: #e0e7ff;
+}
+
+.dark-square {
+  background: #6366f1;
+}
+
+.square:hover {
+  box-shadow: inset 0 0 0 4px #facc15;
+}
+
+.conflict-square {
+  box-shadow: inset 0 0 0 5px #ef4444;
+}
+
+.queen {
+  font-size: clamp(24px, 6vw, 52px);
+  line-height: 1;
+  filter: drop-shadow(0 3px 2px #ffffff80);
+  transition:
+    color 0.2s,
+    transform 0.2s;
+}
+
+.safe-queen {
+  color: #111827;
+}
+
+.conflicting-queen {
+  color: #dc2626;
+  animation: conflict-pulse 0.8s infinite alternate;
+}
+
+.status-panel {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  color: #334155;
+  font-weight: bold;
+}
+
+@keyframes conflict-pulse {
+  from {
+    transform: scale(1);
+    filter: drop-shadow(0 0 2px #ef4444);
+  }
+
+  to {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 10px #ef4444);
+  }
+}
+
+@media (max-width: 600px) {
+  .app {
+    padding: 25px 10px;
+  }
+
+  header h1 {
+    font-size: 28px;
+  }
+
+  .controls {
+    flex-wrap: wrap;
+  }
+
+  .chessboard {
+    width: 94vw;
+    border-width: 5px;
+  }
+
+  .status-panel {
+    flex-direction: column;
+    gap: 0;
+  }
+}
